@@ -5,7 +5,6 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 
 import accounts.Account;
-import users.User;
 
 /**
  * Savings account class. Cannot be over-drawn, and it has compound interest.

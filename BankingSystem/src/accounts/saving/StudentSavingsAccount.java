@@ -3,7 +3,6 @@ package accounts.saving;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import users.User;
 
 public class StudentSavingsAccount extends SavingsAccount {
 	private final BigDecimal MONTHLY_FEE = new BigDecimal(5);

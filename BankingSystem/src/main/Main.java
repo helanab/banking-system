@@ -11,9 +11,6 @@ import users.Teller;
 class Main {
     public static void main(String[] args) {
 
-	    Account a = new StudentSavingsAccount(1234, 123, new BigDecimal(500), "B00972354", LocalDate.now());
-	    System.out.println(a.getClass().getSimpleName() + " hello");
-
     	Teller teller_helanaBrock = new Teller("Helana", "Brock", LocalDate.of(2000, 3, 3), "B100943757", "Teller", new Address("10007 Fleming Rd", "Fowlerville", "Michigan", 48836));
 
     	teller_helanaBrock.accessBankingSystem().addUser("Brian", "Gillies", LocalDate.of(2000, 2, 18), "B0098273", "Chemistry Major", "70019 Kimberly Ct", "Fowlerville", "MI", 48836);
