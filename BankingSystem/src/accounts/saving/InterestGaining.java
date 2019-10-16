@@ -1,5 +1,8 @@
 package accounts.saving;
 
-public interface InterestGaining {
+import java.math.BigDecimal;
 
+public interface InterestGaining {
+	public BigDecimal getInterestAccrued();
+	public BigDecimal calculateCompoundInterest(int timeInterval);
 }

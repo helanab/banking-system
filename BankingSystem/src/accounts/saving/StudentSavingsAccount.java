@@ -13,6 +13,18 @@ public class StudentSavingsAccount extends SavingsAccount {
 		super(pinNumber, accountNumber, accountBalance, primaryAccountOwnerLicenseNumber, dateCreated);
 	}
 
+	@Override
+	public BigDecimal getInterestAccrued() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BigDecimal calculateCompoundInterest(int timeInterval) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public BigDecimal get_MONTHLY_FEE() {
 		return this.MONTHLY_FEE;
 	}
@@ -20,6 +32,5 @@ public class StudentSavingsAccount extends SavingsAccount {
 	public BigDecimal get_WAIVE_AMOUNT() {
 		return this.WAIVE_AMOUNT;
 	}
-
 	
 }

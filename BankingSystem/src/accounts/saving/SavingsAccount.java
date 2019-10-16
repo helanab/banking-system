@@ -12,7 +12,7 @@ import users.User;
  * 
  * @author Helana Brock
  */
-public abstract class SavingsAccount extends Account {
+public abstract class SavingsAccount extends Account implements InterestGaining {
 	final double COMPOUND_INTEREST_RATE = 0.01;
 
 	/**
