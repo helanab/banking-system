@@ -9,8 +9,8 @@ public class BusinessSavingsAccount extends SavingsAccount {
 	private final BigDecimal MONTHLY_FEE = new BigDecimal(5);
 	private final BigDecimal TRANSACTION_FEE = new BigDecimal(0.25);
 
-	public BusinessSavingsAccount(int pinNumber, int accountNumber, BigDecimal accountBalance, User primaryAccountOwner, User authorizedUser, LocalDate dateCreated, LocalDate dateClosed, Status status) {
-		super(pinNumber, accountNumber, accountBalance, primaryAccountOwner, authorizedUser, dateCreated, dateClosed, status);
+	public BusinessSavingsAccount(int pinNumber, int accountNumber, BigDecimal accountBalance, String primaryAccountOwnerLicenseNumber, LocalDate dateCreated) {
+		super(pinNumber, accountNumber, accountBalance, primaryAccountOwnerLicenseNumber, dateCreated);
 	}
 
 	public BigDecimal get_MONTHLY_FEE() {

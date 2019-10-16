@@ -12,7 +12,7 @@ public class Teller extends User {
 		super(firstName, lastName, birthDate, licenseNumber, occupation, address);
 	}
 
-	public static BankingSystem accessBankingSystem() {
+	public BankingSystem accessBankingSystem() {
 		return bs;
 	}
 

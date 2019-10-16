@@ -13,16 +13,18 @@ public class Transaction {
 	private LocalTime time;
 	private BigDecimal amount;
 	private User user;
+	private String userLicenseNumber;
 	private Teller teller;
+	private String tellerLicenseNumber;
 	private int accountNumber;
-	
-	public Transaction(String type, BigDecimal amount, User user, Teller teller, int accountNumber) {
+
+	public Transaction(String type, BigDecimal amount, String userLicenseNumber, String tellerLicenseNumber, int accountNumber, LocalDate date, LocalTime time) {
 		this.type = type;
-		this.date = LocalDate.now();
-		this.time = LocalTime.now();
+		this.date = date;
+		this.time = time;
 		this.amount = amount;
-		this.user = user;
-		this.teller = teller;
+		this.userLicenseNumber = userLicenseNumber;
+		this.tellerLicenseNumber = tellerLicenseNumber;
 		this.accountNumber = accountNumber;
 	}
 
@@ -58,28 +60,28 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUserLicenseNumber() {
+		return userLicenseNumber;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public Teller getTeller() {
-		return teller;
+	public String getTellerLicenseNumber() {
+		return tellerLicenseNumber;
 	}
 
 	public void setTeller(Teller teller) {
 		this.teller = teller;
 	}
-	
+
 	public int getAccountNumber() {
 		return this.accountNumber;
 	}
-	
+
 	public void setAccountNumber() {
 		this.accountNumber = accountNumber;
 	}
-	
+
 }

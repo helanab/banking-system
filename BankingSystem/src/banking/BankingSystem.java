@@ -24,7 +24,7 @@ import users.User;
 
 public class BankingSystem {
 	protected HashMap<String, User> userMap = new HashMap<String, User>();
-	
+
 	public Account getAccount(String licenseNumber, int accountNumber) {
 		return userMap.get(licenseNumber).getAccount(accountNumber);
 	}
@@ -33,21 +33,23 @@ public class BankingSystem {
 		User user = userMap.get(licenseNumber);
 		Account account = user.getAccount(accountNumber);
 		account.withdraw(amountToWithdraw);
-		BankingInformationDAO.recordTransaction(user, account, amountToWithdraw, teller);
+		Transaction t = BankingInformationDAO.recordTransaction(user, account, amountToWithdraw, teller);
+		printReciept(t);
 	}
 
 	public void deposit(String licenseNumber, int accountNumber, BigDecimal amountToDeposit, Teller teller) {
 		User user = userMap.get(licenseNumber);
 		Account account = user.getAccount(accountNumber);
 		account.withdraw(amountToDeposit);
-		BankingInformationDAO.recordTransaction(user, account, amountToDeposit, teller);
+		Transaction t = BankingInformationDAO.recordTransaction(user, account, amountToDeposit, teller);
+		printReciept(t);
 	}
-	
+
 	public void loadInformation() {
 		List<User> userList;
 		List<Account> accounts;
 		List<Transaction> transactions;
-		
+
 		try {
 			userList = BankingInformationDAO.loadUsers("users.txt");
 		} catch (IOException e) {
@@ -66,19 +68,19 @@ public class BankingSystem {
 			System.out.println("Specifed file for transactions doesn't exist.");
 			transactions = null;
 		}
-		
+
 		if(userList != null) {
 			for(int i = 0; i < userList.size(); i++) {
 				userMap.put(userList.get(i).getLicenseNumber(), userList.get(i));
 			}
 		}
-		
+
 		if(userList != null) {
 			for(int i = 0; i < userList.size(); i++) {
 				userMap.put(userList.get(i).getLicenseNumber(), userList.get(i));
 			}
 		}
-		
+
 		if(transactions != null && accounts != null && userList != null) {
 			for(int i = 0; i < transactions.size(); i++) {
 				for(int j = 0; j < accounts.size(); j++) {
@@ -94,7 +96,7 @@ public class BankingSystem {
 			}
 		}
 	}
-	
+
 	public User getUser(String licenseNumber) throws UserDoesNotExistException {
 		boolean userExists = doesUserExist(licenseNumber);
 		if(userExists == false) {
@@ -134,8 +136,8 @@ public class BankingSystem {
 
 	public boolean doesAccountExist(Account account) {
 		boolean accountExists = false;
-		
-		
+
+
 		return accountExists;
 	}
 
@@ -182,8 +184,13 @@ public class BankingSystem {
 		user.getAccount(accountNumber).setStatus(Status.CLOSED);
 	}
 
-	public void printReciept() {
-
+	public void saveData(List<User> users, List<Account> accounts, List<Transaction> transactions) {
+		BankingInformationDAO.recordUsers(users);
+		BankingInformationDAO.recordAccounts(accounts);
+		BankingInformationDAO.recordTransactions(transactions);
 	}
 
+	public void printReciept(Transaction t) {
+		System.out.println(t.getType());
+	}
 }
