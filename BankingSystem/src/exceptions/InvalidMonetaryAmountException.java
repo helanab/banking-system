@@ -1,8 +1,11 @@
 package exceptions;
 
+
 public class InvalidMonetaryAmountException extends ArithmeticException{
 
-  public InvalidMonetaryAmountException(String message) {
+	private static final long serialVersionUID = -3444952704630066025L;
+
+	public InvalidMonetaryAmountException(String message) {
         super(message);
     }
 }

@@ -11,18 +11,18 @@ public class Transaction {
 	private String type;
 	private LocalDate date;
 	private LocalTime time;
-	private BigDecimal amount;
+	private String amount;
 	private User user;
 	private String userLicenseNumber;
 	private Teller teller;
 	private String tellerLicenseNumber;
 	private int accountNumber;
 
-	public Transaction(String type, BigDecimal amount, String userLicenseNumber, String tellerLicenseNumber, int accountNumber, LocalDate date, LocalTime time) {
+	public Transaction(String type, String amountToWithdraw, String userLicenseNumber, String tellerLicenseNumber, int accountNumber, LocalDate date, LocalTime time) {
 		this.type = type;
 		this.date = date;
 		this.time = time;
-		this.amount = amount;
+		this.amount = amountToWithdraw;
 		this.userLicenseNumber = userLicenseNumber;
 		this.tellerLicenseNumber = tellerLicenseNumber;
 		this.accountNumber = accountNumber;
@@ -52,11 +52,11 @@ public class Transaction {
 		this.time = time;
 	}
 
-	public BigDecimal getAmount() {
+	public String getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 

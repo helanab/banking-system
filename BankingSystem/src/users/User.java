@@ -1,5 +1,6 @@
 package users;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,14 @@ public class User {
 			}
 		}
 		return null;
+	}
+	
+	public BigDecimal getCombinedAverageOfAccounts() {
+		BigDecimal total = new BigDecimal(0);
+		for(int i = 0; i < accounts.size(); i++) {
+			total.add(accounts.get(i).getAccountBalance());
+		}
+		return total.divide(new BigDecimal(accounts.size()));
 	}
 
 	public String getFirstName() {
