@@ -10,8 +10,9 @@ import exceptions.InsufficientFundsException;
 import users.User;
 
 /**
+ * Abstract that provides all the fields for a basic bank account (with setters and getters), a deposit function, and a basic verify function
+ * 
  * @author Helana Brock
- *
  */
 public abstract class Account {
 	public enum Status {
@@ -23,19 +24,19 @@ public abstract class Account {
 	protected int pinNumber, accountNumber;
 	protected BigDecimal accountBalance;
 	protected User primaryAccountOwner;
-	protected List<User> authorizedUsers;
-	protected List<Transaction> transactions;
+	protected List<User> authorizedUsers; // Mainly for those authorized to use a given account
+	protected List<Transaction> transactions; // To save data from bank transactions
 	protected LocalDate dateCreated;
 	protected LocalDate dateClosed;
 	protected Status status;
-	protected BigDecimal amountSpent;
+	protected BigDecimal amountSpent; // The total amount that's been withdrawn from date created to present
 	
 	
 	/**
-	 * @param pinNumber
-	 * @param accountNumber
-	 * @param accountBalance
-	 * @param primaryAccountOwner
+	 * @param pinNumber: User given code to use at ATM's or for other bank transactions
+	 * @param accountNumber: The unique code to a specific instance of an account
+	 * @param accountBalance: How money money is in the account (can be negative for checking accounts)
+	 * @param primaryAccountOwner: The main person who controls the account
 	 * @param dateCreated
 	 * @param dateClosed
 	 * @param status
@@ -53,6 +54,7 @@ public abstract class Account {
 	
 	
 	/**
+	 * The user can deposit as much money as they have/want, however, it cannot be negative
 	 * 
 	 * @param amountToDeposit: The amount we want to add to accountBalance.
 	 */
@@ -64,6 +66,7 @@ public abstract class Account {
 	
 	
 	/**
+	 * The user can withdraw only up until what the given account allows; there are different implementations
 	 * 
 	 * @param amountToWithdraw: The amount we want to subtract from accountBalance.
 	 */
@@ -71,6 +74,7 @@ public abstract class Account {
 	
 	
 	/**
+	 * Verifies a given monetary amount to make sure there are no letters, negative signs, etc.
 	 * 
 	 * @param amount: the amount of money we want to withdraw.
 	 * @return approved: whether or not we can withdraw the amount.

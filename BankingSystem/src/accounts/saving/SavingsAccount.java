@@ -7,6 +7,11 @@ import accounts.Account;
 import exceptions.InsufficientFundsException;
 import users.User;
 
+/**
+ * Basic savings account. Cannot be overdrawn, and has compound interest.
+ * 
+ * @author Helana Brock
+ */
 public abstract class SavingsAccount extends Account implements InterestGaining {
 	
 	final double COMPOUND_INTEREST_RATE = 0.06;
